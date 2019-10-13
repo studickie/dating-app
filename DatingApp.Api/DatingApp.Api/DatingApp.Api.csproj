@@ -18,5 +18,9 @@
     <Folder Include="Models\" />
     <Folder Include="Data\" />
     <Folder Include="Dtos\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DatingApp.db" />
   </ItemGroup>
 </Project>
