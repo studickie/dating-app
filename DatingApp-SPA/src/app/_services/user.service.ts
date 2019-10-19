@@ -25,4 +25,8 @@ export class UserService {
     getUser(id): Observable<IUser> {
         return this.http.get<IUser>(this.baseUrl + "users/" + id);
     }
+
+    updateUser(id: number, user: IUser) {
+        return this.http.put(this.baseUrl + "users/" + id, user);
+    }
 }
