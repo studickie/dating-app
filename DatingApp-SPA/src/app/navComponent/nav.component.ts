@@ -33,11 +33,11 @@ export default class NavComponent implements OnInit {
         })
     }
 
-    loggedIn() {
+    loggedIn () {
         return this.authService.loggedIn();
     }
 
-    logout() {
+    logout () {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         this.authService.decodedToken = null;
