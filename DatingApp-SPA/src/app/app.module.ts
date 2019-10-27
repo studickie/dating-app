@@ -35,6 +35,7 @@ import { PreventUnsavedChanges } from "./_guards/preventUnsavedChanges.guard";
 import { UserService } from './_services/user.service';
 import { MemberListResolver } from './_resolvers/memberList.resolver';
 import { MemberEditResolver } from "./_resolvers/memberEdit.resolver";
+import { ListsResolver } from "./_resolvers/lists.resolver";
 
 export function tokenGetter () {
   return localStorage.getItem("token");
@@ -94,6 +95,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailResolver,
     MemberListResolver,
     MemberEditResolver,
+    ListsResolver,
     UserService,
     {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
   ],
