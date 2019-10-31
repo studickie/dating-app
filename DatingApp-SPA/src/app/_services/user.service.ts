@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { IUser } from "../_models/IUser";
 import { PaginatedResult } from '../_models/IPagination';
+import { IMessage } from "../_models/IMessage";
 import { map } from 'rxjs/operators';
 
 // const httpOptions = {
@@ -76,5 +77,34 @@ export class UserService {
 
     sendLike(id: number, recipientId: number) {
         return this.http.post(`${this.baseUrl}users/${id}/like/${recipientId}`, {});
+    }
+
+    getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
+        const paginatedResult: PaginatedResult<IMessage[]> = new PaginatedResult<IMessage[]>();
+
+        let params = new HttpParams();
+
+        params = params.append("MessageContainer", messageContainer);
+
+        if (page != null && itemsPerPage != null) {
+            params = params.append("pageNumber", page);
+            params = params.append("pageSize", itemsPerPage);
+        }
+
+        return this.http.get<IMessage[]>(`${this.baseUrl}users/${id}/messages`, {observe: "response", params})
+            .pipe(
+                map(response => {
+                    paginatedResult.results = response.body;
+                    if(response.headers.get("Pagination") != null) {
+                        paginatedResult.pagination = JSON.parse(response.headers.get("pagination"));
+                    }
+
+                    return paginatedResult;
+                })
+            );
+    }
+
+    getMessageThread(id: number, recipientId: number) {
+        return this.http.get<IMessage[]>(`${this.baseUrl}users/${id}/messages/thread/${recipientId}`);
     }
 }

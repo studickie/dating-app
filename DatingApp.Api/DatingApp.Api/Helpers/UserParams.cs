@@ -5,7 +5,7 @@ namespace DatingApp.Api.Helpers
     {
         private const int MaxPageSize = 25;
         public int PageNumber { get; set; } = 1;
-        public int pageSize = 10;
+        private int pageSize = 10;
 
         public int PageSize
         {

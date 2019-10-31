@@ -24,6 +24,7 @@ import MemberDetailComponent from "./membersComponent/memberDetailComponent/memb
 import PhotoUploadComponent from "./membersComponent/PhotoUploadComponent/photoUpload.component";
 import ListsComponent from './listsComponent/lists.component';
 import MemberEditComponent from "./membersComponent/memberEdit.Component.ts/memberEdit.component";
+import MemberMessagesComponent from './membersComponent/memberMessagesComponent/memberMessages.component';
 
 // services
 import { AuthService } from "./_services/auth.service";
@@ -36,6 +37,7 @@ import { UserService } from './_services/user.service';
 import { MemberListResolver } from './_resolvers/memberList.resolver';
 import { MemberEditResolver } from "./_resolvers/memberEdit.resolver";
 import { ListsResolver } from "./_resolvers/lists.resolver";
+import { MemberMessagesResolver } from './_resolvers/memberMessages.resolver';
 
 export function tokenGetter () {
   return localStorage.getItem("token");
@@ -59,6 +61,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MessagesComponent,
     MemberDetailComponent,
     MemberEditComponent,
+    MemberMessagesComponent,
     PhotoUploadComponent,
     ListsComponent,
     TimeAgoPipe 
@@ -96,6 +99,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberListResolver,
     MemberEditResolver,
     ListsResolver,
+    MemberMessagesResolver,
     UserService,
     {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
   ],
